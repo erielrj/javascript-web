@@ -1,29 +1,33 @@
         // Botão calcular
         var btnCalc = document.getElementById("btnCalc");
-        btnCalc.onclick = calcBoxes;
+        btnCalc.onclick = calcularRendimento;
 
-        //Registra as saídas
-        var results = [];
 
-        // Função que calcula a quantidade de caixas
-        function calcBoxes(){
-            var comprimento = Number(document.getElementById("comprimento").value);
-            var altura = Number(document.getElementById("largura").value);
-            var largura = Number(document.getElementById("largura").value);
+        // Função que calcula o rendimento
+        function calcularRendimento(){
+            const valorCombustivel = 4.87;
 
-            var quantBox = (((comprimento*altura) + (largura*altura)) / 1.5) * 2;
+            let kmOdometroInicial       = Number(document.getElementById("KmOdometroInicial").value);
+            let kmOdometroFinal         = Number(document.getElementById("KmOdometroFinal").value);
+            let litrosCombustivel       = Number(document.getElementById("litrosCombustivel").value);
+            let valorTotalPassageiros   = Number(document.getElementById("valorTotalPassageiros").value);
 
-            results.push(quantBox.toFixed(2));
-            imprimir(); // Chama a função imprimir
+            let kmRodados           = kmOdometroFinal - kmOdometroInicial;
+            let consumoMedio        = kmRodados / litrosCombustivel
+            let gastoCombustivel    = litrosCombustivel * valorCombustivel;
+            let lucroLiquido        = valorTotalPassageiros - gastoCombustivel;
+            
+            imprimir(consumoMedio, lucroLiquido); // Chama a função imprimir
         }
 
         // Escreve na tela 
-        function imprimir(){
-            var saida = document.getElementById("saida");
-            saida.innerHTML = '';
+        function imprimir(consumoMedio, lucroLiquido){
+            
+            document.getElementById("consumoMedio").textContent = consumoMedio.toFixed(2);
+            document.getElementById("lucroLiquido").textContent = String(lucroLiquido.toFixed(2)).replace("." , ",");
 
-            for(result of results){
-                saida.innerHTML += `<li>${result}</li>`;
-            }
+
+            // Torna a tabela visível
+            document.getElementById("resultado").style.display = "block";
         }
         
