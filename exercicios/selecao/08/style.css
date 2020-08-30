@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+
+td, tr, th {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 25px;
+}
+
+.resultado {
+    display:none;
+}
