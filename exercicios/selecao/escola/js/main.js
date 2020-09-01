@@ -1,11 +1,11 @@
-var btnCalc = document.getElementById("btnCalc");
-btnCalc.setAttribute("onclick", 
-        `resultado( document.getElementById('nome').value,
-                    document.getElementById('nota1').value, 
-                    document.getElementById('nota2').value, 
-                    document.getElementById('optativa').value)`);
-
 (function () { 
+    var btn = document.getElementById("btnCalc");
+    btn.setAttribute("onclick", 
+            `resultado( document.getElementById('nome').value,
+                        document.getElementById('nota1').value, 
+                        document.getElementById('nota2').value, 
+                        document.getElementById('optativa').value)`);
+
     var obrigatorios = document.querySelectorAll(".required");
     for (i = 0; i < obrigatorios.length; i++){
         obrigatorios[i].setAttribute("onblur", `valida(this)`)
@@ -72,7 +72,7 @@ function addAluno(aluno){
 function valida(el){
     if(el.value == ""){
         saida(`<p class='alert alert-danger'>Preencha o campo ${el.placeholder}!</p>`)
-    } else if(document.getElementById("saida").innerHTML){
+    } else {
         document.getElementById("saida").innerHTML = '';
     }
 }
