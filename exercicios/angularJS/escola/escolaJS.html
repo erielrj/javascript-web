@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular azulejos</title>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- LIB: SANITIZE -->
+    <script src="js/lib/angular-sanitize.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body ng-app="rapadura">
+
+    <div ng-controller="myCtrl" class="container bg-dark text-light rounded d-flex flex-column align-items-center text-center">
+
+        <section class="row my-4">
+            <h2>Nota</h2>
+        </section>
+        
+        <form class="d-flex flex-column align-items-center text-center">
+            <section class="row mt-2">
+                <div class="form-group">
+                    <input type="text" ng-model="nome" class="form-control required" placeholder="Nome">
+                </div>
+            </section>
+            <section class="row mt-2">
+                <div class="form-group">
+                    <input type="number" ng-model="nota1" class="form-control required" placeholder="Nota 1">
+                </div>
+            </section>
+            <section class="row">
+                <div class="form-group">
+                    <input type="number" ng-model="nota2" class="form-control required" placeholder="Nota 2">
+                </div>
+            </section>
+            <section class="row">
+                <div class="form-group">
+                    <input type="number" ng-model="optativa" class="form-control" placeholder="Optativa">
+                </div>
+            </section>
+
+            <section class="row">
+                <div class="form-group col-6">
+                    <button type="button" id="btnCalc" class="btn btn-primary" ng-click="calcResultado()">Calcular</button>
+                </div>
+            </section>
+        </form>
+            
+        <section ng-if="alunos[0]" class="row">
+            <div class="col-12">
+                <p ng-if="resposta" class="alert alert-info text-center">{{ resposta }}</p>
+            </div>
+            <table class='table table-light text-dark'>
+                <tr>
+                    <th> Nome </th>
+                    <th> Nota 1 </th>
+                    <th> Nota 2 </th>
+                    <th> Média </th>
+                    <th> Resultado </th>
+                    <th> X </th>
+                </tr>
+                <tr ng-repeat="aluno in alunos">
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.nota1 }}</td>
+                    <td>{{ aluno.nota2 }}</td>
+                    <td>{{ aluno.media }}</td>
+                    <td>{{ aluno.resultado }}</td>
+                    <td ng-click='removeAluno()'> X </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <div class="container jumbotron py-4">    
+        <strong>Exercício:</strong>
+        <p> 
+            2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa. Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as informações abaixo: 
+            Aprovado : média >= 6.0, Reprovado: media < 3.0, Exame: média >= 3.0 e < 6.0 
+        </p>
+        <p>
+            3) Escreva um programa para ler as notas das duas avaliações de um aluno no semestre, calcular e escrever a média semestral e a seguinte mensagem: PARABÉNS! Você foi aprovado! somente se o aluno foi aprovado (considere 6.0 a média mínima para aprovação). 
+        </p>
+        <p>
+            4) Acrescente ao exercício anterior a mensagem Você foi REPROVADO! Estude mais... caso a média calculada seja menor que 6.0. 
+        </p>
+    </div>
+        
+    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
