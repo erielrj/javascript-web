@@ -59,6 +59,7 @@ function resultado(nome, nota1, nota2, optativa = -1){
     var aluno = new Aluno(nome, nota1, nota2, optativa, result);
     addAluno(aluno);
     document.forms[0].reset();
+    showTable();
 }
 
 function saida(texto){
@@ -67,6 +68,7 @@ function saida(texto){
 
 function addAluno(aluno){
     alunos.push(aluno);
+    console.log(alunos)
 }
 
 function valida(el){
@@ -74,5 +76,49 @@ function valida(el){
         saida(`<p class='alert alert-danger'>Preencha o campo ${el.placeholder}!</p>`)
     } else {
         document.getElementById("saida").innerHTML = '';
+    }
+}
+
+function showTable(){
+    if(alunos[0]){
+
+        //Verifica se a tabela já existe, senão cria a tabela.
+        if(!document.getElementById("tabela")){
+            let table = document.createElement("table");
+            table.setAttribute("id", "tabela");
+            table.setAttribute("class", "table");
+            document.getElementById("saida").appendChild(table);
+        }
+
+        let table = document.getElementById("tabela");
+
+        for(i = 0; i < alunos.length; i++){
+            let linha = document.createElement("tr")
+            table.appendChild(linha)
+
+            let tdNome = document.createElement("td");
+            let tdNota1 = document.createElement("td");
+            let tdNota2 = document.createElement("td");
+            let tdMedia = document.createElement("td");
+            let tdResultado = document.createElement("td");
+            
+            let txtNome = document.createTextNode(alunos[i].nome)
+            let txtNota1 = document.createTextNode(alunos[i].nota1)
+            let txtNota2 = document.createTextNode(alunos[i].nota2)
+            let txtMedia = document.createTextNode(alunos[i].media)
+            let txtResultado = document.createTextNode(alunos[i].result)
+            
+            tdNome.appendChild(txtNome)
+            tdNota1.appendChild(txtNota1)
+            tdNota2.appendChild(txtNota2)
+            tdMedia.appendChild(txtMedia)
+            tdResultado.appendChild(txtResultado)
+            let elements = [tdNome, tdNota1, tdNota2, tdMedia, tdResultado];
+            
+                for(el of elements){
+                    linha.appendChild(el)
+                }
+
+        }
     }
 }

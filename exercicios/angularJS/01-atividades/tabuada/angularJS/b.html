@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+    <style>
+        .tabuadas{
+            display:flex;
+            flex-wrap:wrap;
+        }
+
+        .tabuada{
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body ng-app="tabuada">
+    <div ng-controller="controlador">
+        
+        <input type="number" ng-model="tabInicial">
+        <input type="number" ng-model="tabFinal">
+
+
+        <div ng-if="tabInicial && tabFinal">
+            {{ mostrarTabelas(tabInicial, tabFinal); }}
+
+            <div ng-if="tabuadas" class="tabuadas">
+                <div class="tabuada" ng-repeat="tabuada in tabuadas">
+                    <p ng-repeat="multiplicador in multiplicadores">{{ tabuada }} X {{ multiplicador }} = {{ tabuada * multiplicador }}</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
