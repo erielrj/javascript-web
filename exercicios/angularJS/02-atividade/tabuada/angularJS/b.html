@@ -4,18 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
-    <style>
-        .tabuadas{
-            display:flex;
-            flex-wrap:wrap;
-        }
-
-        .tabuada{
-            border: 1px solid black;
-            padding: 5px;
-        }
-    </style>
 </head>
 <body ng-app="tabuada">
     <div ng-controller="controlador">
@@ -29,7 +19,7 @@
 
             <div ng-if="tabuadas" class="tabuadas">
                 <div class="tabuada" ng-repeat="tabuada in tabuadas">
-                    <p ng-repeat="multiplicador in multiplicadores">{{ tabuada }} X {{ multiplicador }} = {{ tabuada * multiplicador }}</p>
+                    <div ng-repeat="multiplicador in multiplicadores">{{ tabuada }} X {{ multiplicador }} = {{ tabuada * multiplicador }}</div>
                 </div>
             </div>
         </div>

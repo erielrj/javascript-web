@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+.resultado { 
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.tabuada {
+    padding: 5px;
+    border: 1px solid black;
+    width: 120px;
+}

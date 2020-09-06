@@ -1,0 +1,11 @@
+.tabuadas{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.tabuada{
+    border: 1px solid black;
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+}
